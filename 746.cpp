@@ -2,10 +2,8 @@ class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {
 
-        //int to keep track of the index we're on
-        int i = 0;
-        int total = 0;
-        int opt[cost.size()]; //create array to hold the optimum values
+        //create array to hold the optimum values
+        int opt[cost.size()];
 
         // if length of cost array is 2, return smaller element
         if(cost.size() == 2) {
