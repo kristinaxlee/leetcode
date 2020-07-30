@@ -14,8 +14,13 @@ public:
 
     int maxDepth(TreeNode* root) {
 
-        // if node is a leaf node or doesn't exist, return 1
-        if((root->left == nullptr && root->right == nullptr) || root == nullptr) {
+        // if node doesn't exist (ex. maxDepth(node->left) == NULL)
+        if(root == NULL) {
+            return 0;
+        }
+
+        // if at leaf node
+        else if(root->left == NULL && root->right == NULL) {
             return 1;
         }
 
