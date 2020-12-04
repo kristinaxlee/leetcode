@@ -1,6 +1,8 @@
 class Solution {
 public:
 
+    // returns index of where number is found, or if not found, where it should be
+    // does NOT return -1 if number isn't found
     int binarySearch(vector<int>& nums, int target, int &index) {
         int lo = 0;
         int hi = nums.size()-1;
