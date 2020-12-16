@@ -7,6 +7,8 @@ class Solution(object):
 
         maxStock = 0
         minValue = sys.maxsize
+
+        print("sample branch 2")
         
         
         for i in range(0, len(prices)):
