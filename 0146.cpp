@@ -37,7 +37,7 @@ public:
     {
 
         // if value is in cache, then update the head and return
-        if (this->cache.find(key) != cache.end())
+        if (cache.find(key) != cache.end())
         {
 
             Node *ptr = this->cache[key];
@@ -55,18 +55,18 @@ public:
 
                 else
                 {
-                    this->tail = ptr->prev; // if tail, update the value
+                    tail = ptr->prev; // if tail, update the value
                 }
 
                 ptr->next = this->head;
-                if (this->head != NULL)
+                if (head != NULL)
                 {
                     head->prev = ptr;
                 }
-                this->head = ptr;
-                if (this->tail == NULL)
+                head = ptr;
+                if (tail == NULL)
                 {
-                    this->tail = this->head;
+                    tail = head;
                 }
                 ptr->prev = NULL;
             }
@@ -75,45 +75,45 @@ public:
         }
 
         // if value not in cache and we're at capacity, delete the LRU
-        else if (this->size == this->capacity)
+        else if (size == capacity)
         {
             // erase the node at the tail
-            Node *ptr = this->tail->prev;
-            this->cache.erase(this->tail->key);
-            delete this->tail;
+            Node *ptr = tail->prev;
+            cache.erase(tail->key);
+            delete tail;
             if (ptr)
             {
                 ptr->next = NULL;
             }
-            this->tail = ptr;
-            if (!this->tail)
+            tail = ptr;
+            if (!tail)
             {
-                this->head = ptr;
+                head = ptr;
             }
-            this->size--;
+            size--;
         }
 
         // insert new node into the cache
         Node *newNode = new Node;
-        newNode->next = this->head;
+        newNode->next = head;
         newNode->prev = NULL;
         newNode->val = value;
         newNode->key = key;
 
-        if (this->head != NULL)
+        if (head != NULL)
         {
             head->prev = newNode;
         }
 
-        this->head = newNode;
+        head = newNode;
 
-        if (this->tail == NULL)
+        if (tail == NULL)
         {
-            this->tail = this->head;
+            tail = head;
         }
 
-        this->cache[key] = this->head;
-        this->size++;
+        cache[key] = newNode;
+        size++;
         return;
     }
 };
