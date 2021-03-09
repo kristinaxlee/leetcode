@@ -70,7 +70,7 @@ public:
             delete tail;
             if (ptr){
                 ptr->next = NULL;
-            }
+            }   
             tail = ptr;
             if (!tail){
                 head = ptr;
